@@ -31,7 +31,7 @@ class TestTravelPlan: TestActions2024 {
     let travelPlanViewOne = app.staticTexts["Travel Plans"]
     let tpViewOneText = app.staticTexts["Optimize your experience for meeting locals and others traveling to the same place."]
     let tpViewTwo = app.staticTexts["Have your profile stand out"]
-    let tpViewTwoText = app.staticTexts["Other members also in the same place you’re going will see your profile differently from others."]
+    let tpViewTwoText = app.staticTexts["Others are in the same place you’re visiting."]
     let tpViewThree = app.staticTexts["Any upcoming travel?"]
     let creatTravelButton = app.buttons["Create a Travel Plan"]
     let nextButton = app.buttons["Next"]
