@@ -15,22 +15,22 @@ class EditProfile2024: TestActions2024 {
     tapEditProfile()
 
     let tablesQuery = app.tables
-    let editGallery = tablesQuery.staticTexts["Edit photos"]
-    XCTAssert(editGallery.waitForExistence(timeout: TestConstants.timeout))
-    editGallery.tap()
+    let editPhotoList = tablesQuery.staticTexts["Edit photos"]
+    XCTAssert(editPhotoList.waitForExistence(timeout: TestConstants.timeout))
+    editPhotoList.tap()
     let profilePhoto = tablesQuery.staticTexts["Profile photo"]
     XCTAssert(profilePhoto.waitForExistence(timeout: TestConstants.timeout))
     profilePhoto.tap()
     let profileBack = app.navigationBars["Profile photo"].children(matching: .button).element(boundBy: 0)
     profileBack.tap()
     nap()
-    let imageGallery = tablesQuery.staticTexts["Image gallery"]
-    imageGallery.tap()
-    app.navigationBars["Your gallery"].children(matching: .button).element(boundBy: 0)
-    let galleryBack = app.navigationBars["Your gallery"].children(matching: .button).element(boundBy: 0)
-    galleryBack.tap()
-    let yourGalleryBack = app.navigationBars["Your gallery"].children(matching: .button).element
-    yourGalleryBack.tap()
+    let imageList = tablesQuery.staticTexts["Image gallery"]
+    imageList.tap()
+    app.navigationBars["Your Photo List"].children(matching: .button).element(boundBy: 0)
+    let photoListBack = app.navigationBars["Your Photo List"].children(matching: .button).element(boundBy: 0)
+    photoListBack.tap()
+    let yourListBack = app.navigationBars["Your Photo List"].children(matching: .button).element
+    yourListBack.tap()
 
     // Taps into Gender section
 
@@ -136,13 +136,13 @@ class EditProfile2024: TestActions2024 {
 
     let tablesQuery = app.tables
     app.swipeUp(velocity: 500)
-    let oftenVisitsCopy = tablesQuery.staticTexts["Add cities you often visit"]
-    let oftenVisitsCell = tablesQuery.cells.matching(identifier: "locationFrom.EditProfile").staticTexts["Where I often visit"]
+    let goingToCopy = tablesQuery.staticTexts["Add cities you go to"]
+    let goingToCell = tablesQuery.cells.matching(identifier: "locationFrom.EditProfile").staticTexts["Where I go to"]
 
-    if oftenVisitsCell.exists {
-      oftenVisitsCell.tap()
-    } else if oftenVisitsCopy.exists {
-      oftenVisitsCopy.tap()
+    if goingToCell.exists {
+      goingToCell.tap()
+    } else if goingToCopy.exists {
+      goingToCopy.tap()
     }
     let searchField = app.textFields["Search any city"]
     searchField.tap()
@@ -161,11 +161,11 @@ class EditProfile2024: TestActions2024 {
     let saveButton = app.buttons["Save"]
     saveButton.tap()
 
-    let cityPillID = app.otherElements[CompanyUI.AccessibilityIdentifier.EditProfile.OftenVisits.cityPills]
-    oftenVisitsCell.tap()
-    let nyRemoveButton = cityPillID.staticTexts["New York, NY"]
+    let cityID = app.otherElements[CompanyUI.AccessibilityIdentifier.EditProfile.OftenVisits.cityPills]
+    goingToCell.tap()
+    let nyRemoveButton = cityID.staticTexts["New York, NY"]
     nyRemoveButton.tap()
-    let laRemoveButton = cityPillID.staticTexts["Los Angeles, CA"]
+    let laRemoveButton = cityID.staticTexts["Los Angeles, CA"]
     laRemoveButton.tap()
     app.navigationBars["Add cities you often visit"].buttons["LeftChevron"].tap()
     app.staticTexts["Dismiss"].tap()
@@ -194,25 +194,25 @@ class EditProfile2024: TestActions2024 {
     nap()
     app.swipeUp(velocity: 500)
     nap()
-    let placesRowText = tablesQuery.staticTexts["Places app"]
+    let spacesRowText = tablesQuery.staticTexts["Spaces app"]
     let editPrivacyButton = app.tables.staticTexts["Edit privacy"]
-    let downloadPlacesButton = app.staticTexts["Download Places"]
-    let placesText = app.staticTexts["Enjoy exclusive access to Places"]
-    XCTAssert(placesRowText.waitForExistence(timeout: TestConstants.timeout))
+    let downloadPlacesButton = app.staticTexts["Download Spaces"]
+    let spacesText = app.staticTexts["Enjoy exclusive access to Spaces"]
+    XCTAssert(spacesRowText.waitForExistence(timeout: TestConstants.timeout))
     editPrivacyButton.tap()
-    let placesOnRayaProfile = app.staticTexts["Display Places on Raya profile"]
-    XCTAssert(placesOnRayaProfile.waitForExistence(timeout: TestConstants.timeout))
-    let placesOnRayaProfileToggle = app.switches[CompanyUI.AccessibilityIdentifier.CommonButtons.toggle]
-    placesOnRayaProfileToggle.tap()
+    let spacessOnProfile = app.staticTexts["Display Spaces on profile"]
+    XCTAssert(spacessOnProfile.waitForExistence(timeout: TestConstants.timeout))
+    let spacessOnProfileToggle = app.switches[CompanyUI.AccessibilityIdentifier.CommonButtons.toggle]
+    spacessOnProfileToggle.tap()
     nap()
-    placesOnRayaProfileToggle.tap()
-    app.navigationBars["Places app"].buttons["LeftChevron"].tap()
+    spacessOnProfileToggle.tap()
+    app.navigationBars["Spaces app"].buttons["LeftChevron"].tap()
 
-    if downloadPlacesButton.isHittable {
-      app.tables.staticTexts["Join Places"].tap()
-      XCTAssert(placesText.exists && downloadPlacesButton.exists)
+    if downloadSpacesButton.isHittable {
+      app.tables.staticTexts["Join Spaces"].tap()
+      XCTAssert(spacesText.exists && downloadSpacesButton.exists)
       app.staticTexts["Dismiss"].tap()
-      XCTFail("Places Ad is showing when it shouldn't be")
+      XCTFail("Spaces Ad is showing when it shouldn't be")
       return
     }
 
@@ -241,16 +241,16 @@ class EditProfile2024: TestActions2024 {
     // Taps into mixtape to search for, add and remove a song
     app.swipeUp(velocity: 400)
 
-    let editMixtape = app.tables.staticTexts["Edit Mixtape"]
+    let editMusicList = app.tables.staticTexts["Edit Music List"]
     nap()
-    if editMixtape.exists {
-      editMixtape.tap()
+    if editMusicList.exists {
+      editMusicList.tap()
     }
 
-    let mixtapeNavigationBar = app.navigationBars["Mixtape"]
-    let mixtapeBackButton = mixtapeNavigationBar.buttons["LeftChevron"]
-    let addMixtapeSong = mixtapeNavigationBar.buttons["Add"]
-    addMixtapeSong.tap()
+    let musicListNavigationBar = app.navigationBars["Music List"]
+    let musicListBackButton = musicListNavigationBar.buttons["LeftChevron"]
+    let addMmusicListSong = musicListNavigationBar.buttons["Add"]
+    musicListSong.tap()
     app.textFields["Search any song"].tap()
     app.typeText("nsync")
     app.buttons["Search"].tap()
@@ -276,16 +276,16 @@ class EditProfile2024: TestActions2024 {
 
     app.tables.staticTexts["Dua Lipa"].tap()
     app.buttons["PauseFill"].tap()
-    app.navigationBars["Mixtape"].buttons["LeftChevron"].tap()
-    // app.navigationBars["Mixtape"].children(matching: .button).element(boundBy: 0).tap()
+    app.navigationBars["Music List"].buttons["LeftChevron"].tap()
+    
     // Taps to toggle HJFF
 
     let hjffCopy = app.tables.staticTexts["I'm here for friends"]
     XCTAssert(hjffCopy.waitForExistence(timeout: TestConstants.timeout))
     hjffCopy.tap()
     XCUIApplication().staticTexts["On"].tap()
-    let hjffBack = app.navigationBars["What are you using Raya for"].buttons["LeftChevron"]
-    let ios18hjffBack = app.navigationBars["What are you using Raya for"].children(matching: .button).element
+    let hjffBack = app.navigationBars["What are you using this app for"].buttons["LeftChevron"]
+    let ios18hjffBack = app.navigationBars["What are you using this app for"].children(matching: .button).element
     if hjffBack.exists {
       hjffBack.tap()
     } else if ios18hjffBack.exists {
