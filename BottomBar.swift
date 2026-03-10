@@ -1,7 +1,7 @@
 import XCTest
 import enum CompanyUI.AccessibilityIdentifier
 
-class TestTabBar: TestActions2024 {
+class TestBottomBar: TestActions2024 {
 
   override func setUpWithError() throws {
     try super.setUpWithError()
@@ -9,7 +9,7 @@ class TestTabBar: TestActions2024 {
     XCUIApplication().launch()
   }
 
-  func testTabBarItemsTapped() throws {
+  func testBottomBarItemsTapped() throws {
     dismissInterrupters()
     amIinFullStack()
     nap()
@@ -17,9 +17,9 @@ class TestTabBar: TestActions2024 {
     let window = app.windows.children(matching: .other).element.children(matching: .other).element
     let child = window.children(matching: .other).element.children(matching: .other).element.children(matching: .other)
     let element = child.element.children(matching: .other).element.children(matching: .other).element
-    let rayaHeaderImage = element.children(matching: .other).element.children(matching: .other).element
+    let thisHeaderImage = element.children(matching: .other).element.children(matching: .other).element
     if thisHeaderImage.exists {
-      XCTAssert(rayaHeaderImage.waitForExistence(timeout: TestConstants.timeout))
+      XCTAssert(thisHeaderImage.waitForExistence(timeout: TestConstants.timeout))
     }
     XCTAssertTrue(tabBar.buttons["home"].isHittable)
     XCTAssertTrue(tabBar.waitForExistence(timeout: TestConstants.timeout))
