@@ -6,12 +6,12 @@ class Directory2024: TestActions2024 {
 
   func testDirectorySearch() throws {
     dismissInterrupters()
-    // Tap directory in tab bar then search bar to enter in Raya..
+    // Tap directory in tab bar then search bar to enter in company name..
     directoryTab()
-    app.typeText("Raya")
-    let rayaResult = app.tables[CompanyUI.AccessibilityIdentifier.Directory.exampleSearches].staticTexts["Members at Raya"]
-    XCTAssert(rayaResult.waitForExistence(timeout: TestConstants.timeout))
-    rayaResult.tap()
+    app.typeText("NetFlix")
+    let netflixResult = app.tables[CompanyUI.AccessibilityIdentifier.Directory.exampleSearches].staticTexts["Members at Netflix"]
+    XCTAssert(netflixResult.waitForExistence(timeout: TestConstants.timeout))
+    netflixResult.tap()
     let searches = app.tables[CompanyUI.AccessibilityIdentifier.Directory.exampleSearches]
     let cells = searches.cells
     let resultsCard = cells.matching(identifier: CompanyUI.AccessibilityIdentifier.Directory.resultsProfileCard).firstMatch
@@ -75,10 +75,10 @@ class Directory2024: TestActions2024 {
     dismissButton.tap()
     let enableDirectory = app.buttons["Enable Directory"]
     let directoryPageTitle = app.staticTexts["Directory"]
-    let directoryPageRayaPlus = app.staticTexts["Directory+"]
+    let directoryPageSpecialGuest = app.staticTexts["Directory+"]
     if enableDirectory.exists {
       enableDirectory.tap()
     }
-    XCTAssert(directoryPageTitle.exists || directoryPageRayaPlus.exists)
+    XCTAssert(directoryPageTitle.exists || directoryPageSpecialGuest.exists)
   }
 }
