@@ -12,7 +12,7 @@ class TestActions2024: BaseTest {
     let appNotifs = BaseAuthenticatedTest.sharedApp
     appNotifs.tabBars.firstMatch.waitForExistence(timeout: TestConstants.timeout)
     appNotifs.tap()
-    let rayaAllowContacts = app.buttons["Allow"]
+    let canAllowContacts = app.buttons["Allow"]
     let allowContactsExists = canAllowContacts.waitForExistence(timeout: TestConstants.timeout)
     XCTAssert(allowContactsExists, "APP prompt to allow access to contacts")
     canAllowContacts.tap()
@@ -115,7 +115,7 @@ class TestActions2024: BaseTest {
       nap()
       checkReportModal()
     } else if likeProfileNote.exists {
-      app.buttons["LargeDRButton"].tap()
+      app.buttons["DRButton"].tap()
       let drNote = app.textViews.staticTexts["Add a personal note (optional)"]
       XCTAssert(drNote.waitForExistence(timeout: TestConstants.timeout))
       drNote.tap()
@@ -178,7 +178,7 @@ class TestActions2024: BaseTest {
     }
     XCTAssert(membersNearbyCopy.waitForExistence(timeout: TestConstants.timeout))
 
-    guard let url = URL(string: "raya://") else {
+    guard let url = URL(string: "APP://") else {
          fatalError("Cannot move away from map")
        }
     app.open(url)
