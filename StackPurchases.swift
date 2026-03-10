@@ -23,7 +23,7 @@ final class StackConsumables: StackSwipingActions {
       NSLog("Skip the wait", false)
       nap()
       checkForConnectedView()
-      checkPurchaseEasyTiger()
+      checkPurchaseET()
       swipingLike()
     }
     if eosCarouselSkipTheWait.isHittable {
