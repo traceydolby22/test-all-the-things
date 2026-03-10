@@ -3,7 +3,6 @@ import XCTest
 import enum CompanyUI.AccessibilityIdentifier
 
 class Directory2024: TestActions2024 {
-
   func testDirectorySearch() throws {
     dismissInterrupters()
     // Tap directory in tab bar then search bar to enter in company name..
