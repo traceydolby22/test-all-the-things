@@ -1,7 +1,7 @@
 import XCTest
 import enum CompanyUI.AccessibilityIdentifier
 
-class FriendPass: TestActions2024 {
+class InviteFriends: TestActions2024 {
 
   override func setUpWithError() throws {
     try super.setUpWithError()
@@ -14,11 +14,11 @@ class FriendPass: TestActions2024 {
     nap()
 
     let tablesQuery = app.tables
-    let refferalBackButton = app.navigationBars["Referral"].buttons["back"]
-    let referralButton = app.buttons["friendPass.Profile"]
+    let friendsBackButton = app.navigationBars["Friends"].buttons["back"]
+    let friendsButton = app.buttons["friendPass.Profile"]
     nap()
-    XCTAssert(referralButton.waitForExistence(timeout: TestConstants.timeout))
-    referralButton.tap()
+    XCTAssert(friendsButton.waitForExistence(timeout: TestConstants.timeout))
+    friendsButton.tap()
     nap()
     app.swipeUp(velocity: 800)
     let sendReminder = tablesQuery.cells.containing(
@@ -43,20 +43,20 @@ class FriendPass: TestActions2024 {
     } else {
       textClear.tap()
     }
-    let ignoreReferral = tablesQuery.cells.containing(.staticText, identifier: "GR").staticTexts["Ignore"]
-    XCTAssertTrue(ignoreReferral.waitForExistence(timeout: TestConstants.shortTimeout))
-    ignoreReferral.tap()
-    let dismissReferral = app.scrollViews.otherElements.buttons["Dismiss"]
+    let ignoreFriend = tablesQuery.cells.containing(.staticText, identifier: "GR").staticTexts["Ignore"]
+    XCTAssertTrue(ignoreFriend.waitForExistence(timeout: TestConstants.shortTimeout))
+    ignoreFriend.tap()
+    let dismissFriend = app.scrollViews.otherElements.buttons["Dismiss"]
     let redesignDismiss = app.staticTexts["Dismiss"]
 
-    if dismissReferral.isHittable {
-      dismissReferral.tap()
+    if dismissFriend.isHittable {
+      dismissFriend.tap()
     } else {
       redesignDismiss.tap()
     }
-    let referralNavigationBar = app.navigationBars["Referral"]
-    let referAFriendHistory = app.navigationBars["Refer a Friend"]
-    let referalHistory = referralNavigationBar.buttons["referralsCommitteeButton"]
+    let friendNavigationBar = app.navigationBars["Friend"]
+    let addAFriendHistory = app.navigationBars["Add a Friend"]
+    let referalHistory = referralNavigationBar.buttons["referralsHistoryButton"]
     if referAFriendHistory.isHittable {
       referAFriendHistory.buttons["History"].tap()
     } else {
